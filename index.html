@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            Specifications of Inflection Expressions
+        </title>
+        <link rel="stylesheet" href="main.css" />
+    </head>
+    <body>
+        <div class="outer">
+            <div class="inner">
+                <h1>Inflexp (Inflection Expressions)</h1>
+                <h3>Editor:</h3>
+                <p>Tyrel Jonas Mora</p>
+                <h3>Issue Traking and Change Log:</h3>
+                <p><a href="https://github.com/tjmora/inflexp">On Github</a></p>
+                <h3>Last updated:</h3>
+                <p>22 October 2020</p>
+                <hr/>
+                <h2>Abstract</h2>
+                <p>
+                    <span class="bold">Inflection Expressions</span>, or <span class="bold">inflexp</span> for short, are a
+                    sequence of characters that define the rules or steps that should be undertaken by an implementing software 
+                    library in inflecting a base or root word. Inflexp has character sequences for prefixation, infixation, 
+                    suffixation, repetition (of the word or its syllables), sound change (including stress and tone change), 
+                    sound dropping, supplantation, and others.
+                </p>
+                <p>
+                    This specification is agnostic on how libraries should implement their data structures and method logic. 
+                    To give an example however, one way to implement inflexp is to define a <span class="code">class Word</span>
+                    which main <span class="code">value</span> is of an array type <span class="code">Syllable[]</span> and where
+                    each <span class="code">Syllable</span> has some or all of the following properties:
+                    <span class="code">preMark: char</span>
+                    <span class="code">initial: char</span>, 
+                    <span class="code">medial: char</span>,
+                    <span class="code">nucleus: char</span>,
+                    <span class="code">coda: char[]</span>,
+                    <span class="code">stress: bool</span>,
+                    <span class="code">tone: char</span>,
+                    <span class="code">postMark: char</span>.
+                    Then various inflection methods can be defined to manipulate the syllables and their properties.
+                </p>
+                <h2>License</h2>
+                <p xmlns:dct="http://purl.org/dc/terms/">
+                    <a rel="license" href="http://creativecommons.org/publicdomain/mark/1.0/" class="noUnderline">
+                        <img src="https://licensebuttons.net/p/mark/1.0/80x15.png"
+                            style="border-style: none;" alt="Public Domain Mark" />
+                    </a>
+                    This specification (<span property="dct:title">Inflection Expressions</span>, by 
+                    <a href="https://github.com/tjmora" rel="dct:creator"><span property="dct:title">Tyrel Jonas Mora</span></a>) 
+                    is free of known copyright restrictions.
+                </p>
+                <p>Note: Implementing libraries may have a different license.</p>
+                <h2>Table of Contents</h2>
+                <ul class="tableOfContents">
+                    <li>Background</li>
+                    <li>Terminology</li>
+                    <li>Inflection Expressions</li>
+                    <li>Implementations</li>
+                </ul>
+                <h2>Background</h2>
+                <p>
+                    <span class="bold">Inflexp</span> originally arose from another open-source natural language project, 
+                    <a href="https://github.com/tjmora" class="bold">Halita</a>. Halita is a word-inflection and -deinflection 
+                    library for Philippine languages like Tagalog. The many native languages of the Philippines are inflected 
+                    languages. As different Philippine languages have different affixes and different ways of repeating their 
+                    syllables and root words, a new kind of inflection expression was needed. A simple prefix expression like 
+                    <span class="code">pag-</span> can only do so much when many other Philippine languages don't only prepend 
+                    a prefix, but also introduce sound changes and root word transformations along the way.
+                </p>
+                <h2>Terminology</h2>
+                <p>These are the terminologies.</p>
+                <h2>Inflection Expressions</h2>
+                <p>These are the inflexes.</p>
+                <h2>Implementations</h2>
+                <p>These are the implementations.</p>
+            </div>
+        </div>
+    </body>
+</html>
