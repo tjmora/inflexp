@@ -46,19 +46,18 @@
                         <img src="https://licensebuttons.net/p/mark/1.0/80x15.png"
                             style="border-style: none;" alt="Public Domain Mark" />
                     </a>
-                    This specification (<span property="dct:title">Inflection Expressions</span>, by 
-                    <a href="https://github.com/tjmora" rel="dct:creator"><span property="dct:title">Tyrel Jonas Mora</span></a>) 
+                    This specification (<span property="dct:title">Inflection Expressions</span>) 
                     is free of known copyright restrictions.
                 </p>
-                <p>Note: Implementing libraries may have a different license.</p>
+                <p class="note"><span>Note:</span> Implementing libraries may have a different license.</p>
                 <h2>Table of Contents</h2>
-                <ul class="tableOfContents">
+                <ol type="I" class="tableOfContents">
                     <li>Background</li>
                     <li>Terminology</li>
                     <li>Inflection Expressions</li>
                     <li>Implementations</li>
-                </ul>
-                <h2>Background</h2>
+                </ol>
+                <h2>I. Background</h2>
                 <p>
                     <span class="bold">Inflexp</span> originally arose from another open-source natural language project, 
                     <a href="https://github.com/tjmora" class="bold">Halita</a>. Halita is a word-inflection and -deinflection 
@@ -68,11 +67,62 @@
                     <span class="code">pag-</span> can only do so much when many other Philippine languages don't only prepend 
                     a prefix, but also introduce sound changes and root word transformations along the way.
                 </p>
-                <h2>Terminology</h2>
-                <p>These are the terminologies.</p>
-                <h2>Inflection Expressions</h2>
+                <p>
+                    Early in the development of Halita, it became apparent that its <span class="code">class Word</span> and 
+                    <span class="code">class Syllable</span> source files can be generalized to work not just with Philippine
+                    languages but also with other languages in the world. So those source files were taken out of Halita,
+                    moved into a new open source project, <a href="https://github.com/tjmora/inflexer" class="bold">
+                    Inflexer</a>, and rewritten to reflect their new purpose. This very document serves to standardize the 
+                    specification of the inflection expression used by Inflexer.
+                </p>
+                <h2>II. Terminology</h2>
+                <p>
+                    A <span class="bold">character</span> is a symbol or glyph, which can be a letter, a number, an ideogram,
+                    a pictogram, a punctuation mark or any other special mark.
+                </p>
+                <p>
+                    A <span class="bold">word</span> is a character or a sequence of characters which on its own provides a 
+                    semantic meaning.
+                </p>
+                <p>
+                    A <span class="bold">syllable</span> is a phonological (sound-based) building block of a word. It is 
+                    comprised at least by a nucleus (which is typically a vowel) with optional onset and final sounds 
+                    (which are typically consonants). 
+                </p>
+                <p>
+                    An <span class="bold">initial</span> is any sound, typically a consonant, at the start of a syllable (before
+                    the nucleus).
+                </p>
+                <p>
+                    A <span class="bold">medial</span> is any sound, typically a liquid consonant like &lt;l&gt; or &lt;r&gt;
+                    or a semivowel like &lt;w&gt; or &lt;j&gt;, that comes after the initial of a syllable but before the 
+                    nucleus.
+                </p>
+                <p>
+                    A <span class="bold">nucleus</span> is the central part of a syllable, typically a vowel but can also be
+                    a syllabic consonant (a consonant that forms a syllable on its own).
+                </p>
+                <p>
+                    A <span class="bold">coda</span> is any sound or sounds, typically consonants, in a syllable that comes 
+                    after the nucleus. In some languages, there can be multiple consonants consisting the coda.
+                </p>
+                <p>
+                    A <span class="bold">stress</span> is a an emphasis that may be given to a syllable. Different languages 
+                    have different methods for stress. It can be increasing the loudness of the syllable, or lengthening the 
+                    pronunciation of the nucleus, or changing the tone.
+                </p>
+                <p>
+                    A <span class="bold">tone</span> is a pitch applied to a syllable. In tonal languages like the Chinese 
+                    languages, changing the tone of a syllable can change the meaning of the word.
+                </p>
+                <p>
+                    <span class="bold">Special marks</span> are any symbol (like the dash &lt;-&gt; and the apostrophe 
+                    &lt;’&gt;) that a syllable contains. These may not be necessarily important when inflecting the words 
+                    but may be very important on how the raw syllables are decoded for accurate printing.
+                </p>
+                <h2>III. Inflection Expressions</h2>
                 <p>These are the inflexes.</p>
-                <h2>Implementations</h2>
+                <h2>IV. Implementations</h2>
                 <p>These are the implementations.</p>
             </div>
         </div>
