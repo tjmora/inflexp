@@ -22,7 +22,7 @@ span.bold {
     color:#112d4e;
 }
 span.code {
-    font-family: "Courier New", monospace;
+    font-family: "Lucida Console", Monaco, monospace;
     font-size: 13px;
     padding: 1px;
     background: #dbe2ef;
@@ -44,14 +44,17 @@ h1, h2, h3 {
 h2 {
     margin: 40px 0px 20px 0px;
 }
-h3 {
-    margin: 0px;
-}
-h3 + p {
-    margin: 5px 0px 15px 15px;
-}
 h2 + p, h2 + p ~ p {
     margin: 10px 0px 5px 15px;
+}
+h3 {
+    margin: 20px 0px;
+}
+h3.top {
+    margin: 5px 0px;
+}
+h3.top + p {
+    margin-top: 0px;
 }
 p.note {
     background: #3f72af;
@@ -68,7 +71,7 @@ p.sub {
 }
 table {
     width: 100%;
-    margin-top: 30px;
+    margin-top: 10px;
 }
 table thead {
     background: #112d4e;
@@ -85,6 +88,6 @@ table tbody td {
     padding-left: 5px;
     font-size: 15px;
 }
-table tbody td:first-child + td {
-    font-family: "Courier New", monospace;
+table tbody td:first-child + td + td {
+    font-family: "Lucida Console", Monaco, monospace;
 }

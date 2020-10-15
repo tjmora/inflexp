@@ -10,14 +10,16 @@
         <div class="outer">
             <div class="inner">
                 <h1>Inflexp (Inflection Expressions)</h1>
-                <h3>Editor:</h3>
+                <h3 class="top">Editor:</h3>
                 <p>
                     Tyrel Jonas Mora
                     <br/> (τугеⅼјоɴаѕ.ⅿога@ɡⅿаіⅼ.ϲоⅿ) <span class="small">Type it! Don't copy-paste.</span>
                 </p>
-                <h3>Issues and Change Log:</h3>
-                <p><a href="https://github.com/tjmora/inflexp">On Github</a></p>
-                <h3>Last updated:</h3>
+                <h3 class="top">Issues:</h3>
+                <p><a href="https://github.com/tjmora/inflexp/issues">On Github</a></p>
+                <h3 class="top">Change Log:</h3>
+                <p><a href="https://github.com/tjmora/inflexp/commits/main">On Github</a></p>
+                <h3 class="top">Last updated:</h3>
                 <p>22 October 2020</p>
                 <hr/>
                 <h2>Abstract</h2>
@@ -58,6 +60,14 @@
                     <li>Background</li>
                     <li>Terminology</li>
                     <li>Inflection Expressions</li>
+                    <ol type="A">
+                        <li>Repetition</li>
+                        <li>Prefixation</li>
+                        <li>Suffixation</li>
+                        <li>Infixation</li>
+                        <li>Sound Changes</li>
+                        <li>Precedence</li>
+                    </ol>
                     <li>Implementations</li>
                 </ol>
                 <h2>I. Background</h2>
@@ -125,22 +135,76 @@
                 </p>
                 <h2>III. Inflection Expressions</h2>
                 <p>
-                    The table below uses base words that are entirely artificial. As such, the words has no special cases 
-                    nor irregularities when inflected through inflexp argument-taking methods. Any natural language-agnostic
-                    or orthography-agnostic library should arrive to the same results as shown in the table when inflecting the 
-                    same base word with the same inflexp argument in the corresponding row of each result.
+                    The table below uses base words that are entirely artificial. As such, the words have no special cases 
+                    nor irregularities when inflected through inflexp argument-taking methods. Any 
+                    natural language/orthography-agnostic library should arrive to the same results as shown in the tables 
+                    below when inflecting the same base word with the same inflexp argument in the corresponding row of each 
+                    result. Natural language-specific (non-agnotic) libraries, on the other hand, will necessarily consider any 
+                    irregularity in the words they are taking, with only their default behavior for regular words matching the 
+                    behaviors show in the tables below.
+                </p>
+                <p>
+                    The base words and resulting words in the tables below are shown syllabified to better show how the words
+                    should be represented internally in any implementing library. In reality, implementing libraries should 
+                    be able to take un-syllabified words and do their own syllabification of them, and output results in 
+                    a valid orthography without syllabification.
+                </p>
+                <p>
+                    The example words in the tables below use the letters &lt;a&gt;, &lt;e&gt;, &lt;i&gt;, &lt;o&gt;, and 
+                    &lt;u&gt; exclusively as the nucleus of syllables. Any other letter or cluster of other letters bounding 
+                    the nucleus are the initial, medial and/or coda. A single letter to the left of a nucleus in a syllable 
+                    is the syllable's initial. If there are two letters to the left of the nucleus, the first one is the initial 
+                    and the second one is the medial. The letter or letters to the right of the nucleus in a syllable is/are the
+                    coda.
                 </p>
                 <p class="note">
-                    <span>Note: </span> Example words below, like klurtbragstronds, is shown as syllabified to better show how 
-                    such a word is represented internally in the data structure used by an implementing library.
+                    <span>Note: </span> The example words in the tables below avoided using digraphs. That is something the 
+                    implementing libraries may also need to take into account.
                 </p>
+                <h3>A. Repetitions</h3>
                 <table>
                     <thead>
-                        <td>Base Word</td><td>Applied inflexp</td><td>Result</td>
+                        <td>No.</td><td>Base Word</td><td>Applied inflexp</td><td>Resulting Word</td>
                     </thead>
                     <tbody>
-                        <tr><td>klurt·brags·tronds</td><td>##</td><td>klurt·brags·tronds</td></tr>
-                        <tr><td>klurt·brags·tronds</td><td>####</td><td>klurt·brags·tronds·klurt·brags·tronds</td></tr>
+                        <tr><td>1</td><td>plags·trold</td><td>#</td><td>plags·trold</td></tr>
+                        <tr><td>2</td><td>plags·trold</td><td>##</td><td>plags·trold·plags·trold</td></tr>
+                        <tr><td>3</td><td>plags·trold</td><td>#=#</td><td>plags·trold-·plags·trold</td></tr>
+                        <tr><td>4</td><td>plags·trold</td><td>1:</td><td>pa·plags·trold</td></tr>
+                        <tr><td>5</td><td>plags·trold</td><td>-1:</td><td>plags·pa·trold</td></tr>
+                        <tr><td>6</td><td>plags·trold</td><td>12:</td><td>pla·plags·trold</td></tr>
+                        <tr><td>7</td><td>plags·trold</td><td>-12:</td><td>plags·pla·trold</td></tr>
+                        <tr><td>8</td><td>plags·trold</td><td>3:</td><td>a·plags·trold</td></tr>
+                        <tr><td>9</td><td>plags·trold</td><td>4:</td><td>ag·plags·trold</td></tr>
+                        <tr><td>10</td><td>plags·trold</td><td>45:</td><td>ags·plags·trold</td></tr>
+                        <tr><td>11</td><td>plags·trold</td><td>14:</td><td>pag·plags·trold</td></tr>
+                        <tr><td>12</td><td>plags·trold</td><td>124:</td><td>plag·plags·trold</td></tr>
+                        <tr><td>13</td><td>plags·trold</td><td>*:</td><td>plags·plags·trold</td></tr>
+                        <tr><td>14</td><td>plags·trold</td><td>*=:</td><td>plags-·plags·trold</td></tr>
+                        <tr><td>15</td><td>plags·trold</td><td>:1</td><td>plags·trold·to</td></tr>
+                        <tr><td>16</td><td>plags·trold</td><td>:1-</td><td>plags·to·trold</td></tr>
+                        <tr><td>17</td><td>plags·trold</td><td>:12</td><td>plags·trold·tro</td></tr>
+                        <tr><td>18</td><td>plags·trold</td><td>:12-</td><td>plags·tro·trold</td></tr>
+                        <tr><td>19</td><td>plags·trold</td><td>:3</td><td>plags·trold·o</td></tr>
+                        <tr><td>20</td><td>plags·trold</td><td>:4</td><td>plags·trold·ol</td></tr>
+                        <tr><td>21</td><td>plags·trold</td><td>:45</td><td>plags·trold·old</td></tr>
+                        <tr><td>22</td><td>plags·trold</td><td>:14</td><td>plags·trold·tol</td></tr>
+                        <tr><td>23</td><td>plags·trold</td><td>:124</td><td>plags·trold·trol</td></tr>
+                        <tr><td>24</td><td>plags·trold</td><td>:*</td><td>plags·trold·trold</td></tr>
+                        <tr><td>25</td><td>plags·trold</td><td>:=*</td><td>plags·trold·-trold</td></tr>
+                        <tr><td>26</td><td>bralt·brilt·brolt</td><td>:1:</td><td>bralt·bi·brilt·brolt</td></tr>
+                        <tr><td>27</td><td>bralt·brilt·brolt</td><td>:-1:</td><td>bralt·brilt·bi·brolt</td></tr>
+                        <tr><td>28</td><td>bralt·brilt·brolt</td><td>:12:</td><td>bralt·bri·brilt·brolt</td></tr>
+                        <tr><td>29</td><td>bralt·brilt·brolt</td><td>:-12:</td><td>bralt·brilt·bri·brolt</td></tr>
+                        <tr><td>30</td><td>bralt·brilt·brolt</td><td>:14:</td><td>bralt·bil·brilt·brolt</td></tr>
+                        <tr><td>31</td><td>bralt·brilt·brolt</td><td>:124:</td><td>bralt·bril·brilt·brolt</td></tr>
+                        <tr><td>32</td><td>bralt·brilt·brolt</td><td>:*:</td><td>bralt·brilt·brilt·brolt</td></tr>
+                        <tr><td>33</td><td>bralt·brilt·brolt</td><td>:*=:</td><td>bralt·brilt-·brilt·brolt</td></tr>
+                        <tr><td>34</td><td>bralt·brilt·brolt</td><td>:-*=:</td><td>bralt·brilt·brilt-·brolt</td></tr>
+                        <tr><td>35</td><td>kan·ken·kin·kon·kun</td><td>:1:</td><td>kan·ke·ken·kin·kon·kun</td></tr>
+                        <tr><td>36</td><td>kan·ken·kin·kon·kun</td><td>:-4:</td><td>kan·ken·en·kin·kon·kun</td></tr>
+                        <tr><td>37</td><td>kan·ken·kin·kon·kun</td><td>::4:</td><td>kan·ke·in·kin·kon·kun</td></tr>
+                        <tr><td>38</td><td>kan·ken·kin·kon·kun</td><td>::-1:</td><td>kan·ken·kin·ki·kon·kun</td></tr>
                     </tbody>
                 </table>
                 <h2>IV. Implementations</h2>
