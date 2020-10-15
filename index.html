@@ -11,8 +11,11 @@
             <div class="inner">
                 <h1>Inflexp (Inflection Expressions)</h1>
                 <h3>Editor:</h3>
-                <p>Tyrel Jonas Mora</p>
-                <h3>Issue Traking and Change Log:</h3>
+                <p>
+                    Tyrel Jonas Mora
+                    <br/> (τугеⅼјоɴаѕ.ⅿога@ɡⅿаіⅼ.ϲоⅿ) <span class="small">Type it! Don't copy-paste.</span>
+                </p>
+                <h3>Issues and Change Log:</h3>
                 <p><a href="https://github.com/tjmora/inflexp">On Github</a></p>
                 <h3>Last updated:</h3>
                 <p>22 October 2020</p>
@@ -121,9 +124,33 @@
                     but may be very important on how the raw syllables are decoded for accurate printing.
                 </p>
                 <h2>III. Inflection Expressions</h2>
-                <p>These are the inflexes.</p>
+                <p>
+                    The table below uses base words that are entirely artificial. As such, the words has no special cases 
+                    nor irregularities when inflected through inflexp argument-taking methods. Any natural language-agnostic
+                    or orthography-agnostic library should arrive to the same results as shown in the table when inflecting the 
+                    same base word with the same inflexp argument in the corresponding row of each result.
+                </p>
+                <p class="note">
+                    <span>Note: </span> Example words below, like klurtbragstronds, is shown as syllabified to better show how 
+                    such a word is represented internally in the data structure used by an implementing library.
+                </p>
+                <table>
+                    <thead>
+                        <td>Base Word</td><td>Applied inflexp</td><td>Result</td>
+                    </thead>
+                    <tbody>
+                        <tr><td>klurt·brags·tronds</td><td>##</td><td>klurt·brags·tronds</td></tr>
+                        <tr><td>klurt·brags·tronds</td><td>####</td><td>klurt·brags·tronds·klurt·brags·tronds</td></tr>
+                    </tbody>
+                </table>
                 <h2>IV. Implementations</h2>
-                <p>These are the implementations.</p>
+                <p><a href="https://github.com/tjmora/inflexer" class="bold">Inflexer</a> - An orthography-agnostic 
+                    JS/TypeScript library that takes inflexp arguments for its inflection methods. </p>
+                <p class="sub"><a href="https://github.com/tjmora/halita" class="bold">Halita</a> - An inflection and 
+                    de-inflection JS/TypeScript library for Philippine languages. It extends Inflexer methods for a more 
+                    accurate inflection and de-inflection of Philippine native words. Halita's own methods can take inflexp 
+                    arguments.
+                </p>
             </div>
         </div>
     </body>

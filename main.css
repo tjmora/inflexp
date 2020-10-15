@@ -15,6 +15,9 @@ a.noUnderline {
 .bold {
     font-weight: bold;
 }
+span.small {
+    font-size: 13px;
+}
 span.bold {
     color:#112d4e;
 }
@@ -27,6 +30,7 @@ span.code {
 .outer {
     display: block;
     width: 100%;
+    margin-bottom: 300px;
 }
 .inner {
     display: block;
@@ -58,4 +62,29 @@ p.note span {
     background: #112d4e;
     color: #dbe2ef;
     padding: 3px;
+}
+p.sub {
+    padding-left: 50px;
+}
+table {
+    width: 100%;
+    margin-top: 30px;
+}
+table thead {
+    background: #112d4e;
+    color:  #dbe2ef;
+}
+table thead td {
+    text-align: center;
+    font-weight: bold;
+}
+table tbody {
+    background: #dbe2ef;
+}
+table tbody td {
+    padding-left: 5px;
+    font-size: 15px;
+}
+table tbody td:first-child + td {
+    font-family: "Courier New", monospace;
 }
