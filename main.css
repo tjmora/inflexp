@@ -2,15 +2,17 @@
     box-sizing: border-box;
 }
 body {
-    font-family: Helvetica, sans-serif;
-    font-size: 17px;
+    font-family: "Helvetica Neue", Helvetica, sans-serif;
+    font-size: 16px;
     min-width: 520px;
 }
 a {
-    color: #364f6b;
-}
-a.noUnderline {
     text-decoration: none;
+    color: #40514e;
+    font-weight: bold;
+}
+a::after {
+    content: "🔗";
 }
 .bold {
     font-weight: bold;
