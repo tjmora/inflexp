@@ -150,10 +150,15 @@
                     be able to test themselves against, see the next section, IV. Specification Examples.
                 </p>
                 <p class="note">
-                    <span>Note: </span>The example words below are showed syllabified through the use of the interpunct &lt;·&gt; symbol to give 
-                    a better view on how an inflexp-inflection should take place. In reality, implementing libraries should be 
-                    able to take un-syllabified words and also output un-syllabified words, with the syllabification and 
-                    un-syllabification happening silently in the background.
+                    <span>Note: </span>The example words below are showed syllabified through the use of the interpunct &lt;·&gt; 
+                    symbol to give a better view on how an inflexp-inflection should take place. In reality, implementing 
+                    libraries should be able to take un-syllabified words and also output un-syllabified words, with the 
+                    syllabification and un-syllabification happening silently in the background.
+                </p>
+                <p class="note">
+                    <span>Note: </span>The examples below use diacritics to denote a stress (acute accent) and a tone 
+                    (hook above). Implementing natural language-specific libraries should handle stresses and tones according 
+                    to the orthography of that natural language.
                 </p>
                 <table>
                     <thead>
@@ -323,6 +328,22 @@
                             <td>tone magnet</td>
                             <td>inflect("trẻp", "-~@on") =&gt; "trep·ỏn"<br/>
                                 inflect("trẻp", "-~~@on") =&gt; "tre·pỏn"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>dot</td>
+                            <td>.</td>
+                            <td>sound pusher</td>
+                            <td>inflect("as·ka·don", "sa.t-") =&gt; "sa·tas·ka·don"<br/>
+                                inflect("as·ka·don", ";t.***:") =&gt; "as·kat·ka·don"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>dollar sign followed by a number (within the scope of a dot)</td>
+                            <td>.$n</td>
+                            <td>stress pusher</td>
+                            <td>inflect("as·ka·don", "sa.t$9-") =&gt; "sa·tás·ka·don"<br/>
+                                inflect("as·ka·don", ";$9.") =&gt; "as·kat·dón"
                             </td>
                         </tr>
                     </tbody>
