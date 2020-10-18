@@ -149,8 +149,8 @@
                     For a more definitive list of specification examples that any implementing library should 
                     be able to test themselves against, see the next section, IV. Specification Examples.
                 </p>
-                <p>
-                    The example words below are showed syllabified through the use of the interpunct &lt;·&gt; symbol to give 
+                <p class="note">
+                    <span>Note: </span>The example words below are showed syllabified through the use of the interpunct &lt;·&gt; symbol to give 
                     a better view on how an inflexp-inflection should take place. In reality, implementing libraries should be 
                     able to take un-syllabified words and also output un-syllabified words, with the syllabification and 
                     un-syllabification happening silently in the background.
@@ -160,30 +160,171 @@
                         <tr><td>Symbol Name</td><td>Symbol</td><td>Representation</td><td>Example</td></tr>
                     </thead>
                     <tbody>
-                        <tr><td>hash sign</td><td>#</td><td>whole base word designator</td><td>"sin·taks".inflect("#") --> "sin·taks"</td></tr>
-                        <tr><td>plus sign</td><td>+</td><td>duplicator</td><td>"sin·taks".inflect("#+") --> "sin·taks·sin·taks"</td></tr>
-                        <tr><td>equal sign</td><td>=</td><td>special mark placement designator</td><td>"sin·taks".inflect("#=#") --> "sin·taks-·sin·taks"</td></tr>
-                        <tr><td>dash</td><td>-</td><td>affixation direction designator</td><td>"sin·taks".inflect("de-") --> "de·sin·taks"<br/>"sin·taks".inflect("-ing") --> "sin·taks·ing"</td></tr>
-                        <tr><td>semicolon</td><td>;</td><td>context direction designator</td><td></td></tr>
-                        <tr><td>colon</td><td>:</td><td>syllable position designator</td><td></td></tr>
-                        <tr><td>comma</td><td>,</td><td>syllable separator for multi-syllabic repetition</td><td></td></tr>
-                        <tr><td>digit 1</td><td>1</td><td>entire onset repeater/designator</td><td>"sin·taks".inflect("1;") --> "sin·sin·taks"<br/>"sin·taks".inflect(";1") --> "sin·taks·taks"</td></tr>
-                        <tr><td>digit 2</td><td>2</td><td>initial repeater/designator</td><td>"klubs·trolp".inflect("24;") --> "ku·klubs·trolp"<br/>"klubs·trolp".inflect("-24;") --> "klubs·ku·trolp"</td></tr>
-                        <tr><td>digit 3</td><td>3</td><td>medial repeater/designator</td><td>"klubs·trolp".inflect(":34;") --> "klubs·ro·trolp"<br/>"klubs·trolp".inflect(";34:") --> "klubs·lu·trolp"</td></tr>
-                        <tr><td>digit 4</td><td>4</td><td>entire nucleus repeater/designator</td><td>"dak·mein·toi".inflect(":4;") --> "dak·ei·mein·toi"</td></tr>
-                        <tr><td>digit 5</td><td>5</td><td>first vowel or syllabic consonant of nucleus repeater/designator</td><td>"dak·mein·toi".inflect(":15:15;") --> "dak·me·mein·to·toi"<br/>"dak·mein·toi".inflect(";15:15") --> "dak·mein·me·toi·to"</td></tr>
-                        <tr><td>digit 6</td><td>6</td><td>last sound of multiphthong nucleus repeater/designator</td><td>"dak·mein·toi".inflect(":-67;") --> "dak·mein·in·toi"</td></tr>
-                        <tr><td>digit 7</td><td>7</td><td>entire coda repeater/designator</td><td>"sart·pelk·mork".inflect("47:47:47;") --> "art·sart·elk·pelk·erk·mork"<br/>"sart·pelk·mork".inflect("-47:-47:-47;") --> "sart·art·pelk·elk·mork·erk"</td></tr>
-                        <tr><td>digit 8</td><td>8</td><td>first sound of coda repeater/designator</td><td>"sart·pelk·mork".inflect("148,148;") --> "sar·pel·sart·pelk·mork"<br/>"sart·pelk·mork".inflect(";148,148") --> "sart·pelk·mork·pel·mor"</td></tr>
-                        <tr><td>digit 9</td><td>9</td><td>last sound of coda repeater/designator</td><td>"sart·pelk·mork".inflect(":149,149;") --> "sart·pek·mok·pelk·mork"<br/>"sart·pelk·mork".inflect(":-149,149;") --> "sart·pelk·pek·mok·mork"</td></tr>
-                        <tr><td>dollar sign</td><td>$</td><td>stress repeater/designator</td><td>"pán·pen".inflect(";$,147") --> "pán·pen·pén"</td></tr>
-                        <tr><td>at sign</td><td>@</td><td>tone repeater/designator</td><td>"pản·pen".inflect("-@,,pon") --> "pản·pen·pỏn"</td></tr>
-                        <tr><td>asterisk</td><td>*</td><td>entire body repeater/designator</td><td>"treiks".inflect("*;") --> "trei·treiks"</td></tr>
-                        <tr><td>double asterisk</td><td>**</td><td>entire rhyme repeater/designator</td><td>"treiks".inflect(";**") --> "treiks·eiks"</td></tr>
-                        <tr><td>triple asterisk</td><td>***</td><td>whole syllable designator</td><td>"treiks".inflect("***+;") --> "treiks·treiks·treiks"</td></tr>
-                        <tr><td>tilde</td><td>~</td><td>sound magnet</td><td>"sin·taks".inflect("-~ing") --> "sin·tak·sing"<br/>"dak·mein·toi".inflect(":~4;") --> "da·kei·mein·toi"<br/>"en·trot".inflect(;24~-) --> "en·tot·rot"</td></tr>
-                        <tr><td>tilde followed by dollar sign</td><td>~$</td><td>stress magnet</td></tr>
-                        <tr><td>tilde followed by at sign</td><td>~@</td><td>tone magnet</td></tr>
+                        <tr>
+                            <td>hash sign</td>
+                            <td>#</td>
+                            <td>whole base word designator</td>
+                            <td>inflect("sin·taks", "#") =&gt; "sin·taks"</td>
+                        </tr>
+                        <tr>
+                            <td>plus sign</td>
+                            <td>+</td>
+                            <td>duplicator</td>
+                            <td>inflect("sin·taks", "#+") =&gt; "sin·taks·sin·taks"</td>
+                        </tr>
+                        <tr>
+                            <td>equal sign</td>
+                            <td>=</td>
+                            <td>special mark placement designator</td>
+                            <td>inflect("sin·taks", "#=#") =&gt; "sin·taks-·sin·taks"</td>
+                        </tr>
+                        <tr>
+                            <td>dash</td>
+                            <td>-</td>
+                            <td>affixation direction designator</td>
+                            <td>inflect("sin·taks", "de-") =&gt; "de·sin·taks"<br/>"sin·taks".inflect("-ing") =&gt; "sin·taks·ing"</td>
+                        </tr>
+                        <tr>
+                            <td>semicolon</td>
+                            <td>;</td>
+                            <td>context direction designator</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>colon</td>
+                            <td>:</td>
+                            <td>syllable position designator</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>comma</td>
+                            <td>,</td>
+                            <td>syllable separator for multi-syllabic repetition</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>digit 1</td>
+                            <td>1</td>
+                            <td>entire onset repeater/designator</td>
+                            <td>inflect("sin·taks", "1;") =&gt; "sin·sin·taks"<br/>
+                                inflect("sin·taks", ";1") =&gt; "sin·taks·taks"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 2</td>
+                            <td>2</td>
+                            <td>initial repeater/designator</td>
+                            <td>inflect("klubs·trolp", "24;") =&gt; "ku·klubs·trolp"<br/>
+                                inflect("klubs·trolp", "-24;") =&gt; "klubs·ku·trolp"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 3</td>
+                            <td>3</td>
+                            <td>medial repeater/designator</td>
+                            <td>inflect("klubs·trolp", ":34;") =&gt; "klubs·ro·trolp"<br/>
+                                inflect("klubs·trolp", ";34:") =&gt; "klubs·lu·trolp"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 4</td>
+                            <td>4</td>
+                            <td>entire nucleus repeater/designator</td>
+                            <td>inflect("dak·mein·toi", ":4;") =&gt; "dak·ei·mein·toi"</td>
+                        </tr>
+                        <tr>
+                            <td>digit 5</td>
+                            <td>5</td>
+                            <td>first vowel or syllabic consonant of nucleus repeater/designator</td>
+                            <td>inflect("dak·mein·toi", ":15:15;") =&gt; "dak·me·mein·to·toi"<br/>
+                                inflect("dak·mein·toi", ";15:15") =&gt; "dak·mein·me·toi·to"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 6</td>
+                            <td>6</td>
+                            <td>last sound of multiphthong nucleus repeater/designator</td>
+                            <td>inflect("dak·mein·toi", ":-67;") =&gt; "dak·mein·in·toi"</td>
+                        </tr>
+                        <tr>
+                            <td>digit 7</td>
+                            <td>7</td>
+                            <td>entire coda repeater/designator</td>
+                            <td>inflect("sart·pelk·mork", "47:47:47;") =&gt; "art·sart·elk·pelk·erk·mork"<br/>
+                                inflect("sart·pelk·mork", "-47:-47:-47;") =&gt; "sart·art·pelk·elk·mork·erk"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 8</td>
+                            <td>8</td>
+                            <td>first sound of coda repeater/designator</td>
+                            <td>inflect("sart·pelk·mork", "148,148;") =&gt; "sar·pel·sart·pelk·mork"<br/>
+                                inflect("sart·pelk·mork", ";148,148") =&gt; "sart·pelk·mork·pel·mor"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>digit 9</td>
+                            <td>9</td>
+                            <td>last sound of coda repeater/designator</td>
+                            <td>inflect("sart·pelk·mork", ":149,149;") =&gt; "sart·pek·mok·pelk·mork"<br/>
+                                inflect("sart·pelk·mork", ":-149,149;") =&gt; "sart·pelk·pek·mok·mork"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>dollar sign</td>
+                            <td>$</td>
+                            <td>stress repeater/designator</td>
+                            <td>inflect("pán·pen", ";$,147") =&gt; "pán·pen·pén"</td>
+                        </tr>
+                        <tr>
+                            <td>at sign</td>
+                            <td>@</td>
+                            <td>tone repeater/designator</td>
+                            <td>inflect("pản·pen", "-@,,pon") =&gt; "pản·pen·pỏn"</td>
+                        </tr>
+                        <tr>
+                            <td>asterisk</td>
+                            <td>*</td>
+                            <td>entire body repeater/designator</td>
+                            <td>inflect("treiks", "*;") =&gt; "trei·treiks"</td>
+                        </tr>
+                        <tr>
+                            <td>double asterisk</td>
+                            <td>**</td>
+                            <td>entire rhyme repeater/designator</td>
+                            <td>inflect("treiks", ";**") =&gt; "treiks·eiks"</td>
+                        </tr>
+                        <tr>
+                            <td>triple asterisk</td>
+                            <td>***</td>
+                            <td>whole syllable repeater/designator</td>
+                            <td>inflect("treiks", "***+;") =&gt; "treiks·treiks·treiks"</td>
+                        </tr>
+                        <tr>
+                            <td>tilde</td>
+                            <td>~</td>
+                            <td>sound magnet</td>
+                            <td>inflect("sin·taks", "-~ing") =&gt; "sin·tak·sing"<br/>
+                                inflect("dak·mein·toi", ":~4;") =&gt; "da·kei·mein·toi"<br/>
+                                inflect("en·trot", ";24~-") =&gt; "en·tot·rot"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>tilde followed by dollar sign</td>
+                            <td>~$</td>
+                            <td>stress magnet</td>
+                            <td>inflect("da·gán", "-~$on") =&gt; "dagan·ón"<br/>
+                                inflect("da·gán", "-~~$on") =&gt; "daga·nón"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>tilde followed by at sign</td>
+                            <td>~@</td>
+                            <td>tone magnet</td>
+                            <td>inflect("trẻp", "-~@on") =&gt; "trep·ỏn"<br/>
+                                inflect("trẻp", "-~~@on") =&gt; "tre·pỏn"
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <h2>IV. Specification Examples</h2>
