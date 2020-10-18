@@ -13,7 +13,7 @@
                 <h3 class="top">Editor:</h3>
                 <p>
                     Tyrel Jonas Mora
-                    </td></tr> (τугеⅼјоɴаѕ.ⅿога@ɡⅿаіⅼ.ϲоⅿ) 
+                    <br/>(τугеⅼјоɴаѕ.ⅿога@ɡⅿаіⅼ.ϲоⅿ) 
                     <span class="small">
                         Type it! All lowercase. Don't copy-paste!
                     </span>
@@ -79,8 +79,8 @@
                     library for Philippine languages like Tagalog. The many native languages of the Philippines are inflected 
                     languages. As different Philippine languages have different affixes and different ways of repeating their 
                     syllables and root words, a new kind of inflection expression was needed. A simple prefix expression like 
-                    <span class="code">pag-</span> can only do so much when many other Philippine languages don't only prepend 
-                    a prefix, but also introduce sound changes and root word transformations along the way.
+                    <span class="code">pang-</span> can only do so much it also introduces sound changes and sound dropping
+                    along the way.
                 </p>
                 <p>
                     Early in the development of Halita, it became apparent that its <span class="code">class Word</span> and 
@@ -134,12 +134,11 @@
                 </p>
                 <p>
                     A <span class="bold">tone</span> is a pitch applied to a syllable. In tonal languages like the Chinese 
-                    languages, changing the tone of a syllable can change the meaning of the word.
+                    languages, changing the tone of a syllable can change a word into a different word with a different meaning.
                 </p>
                 <p>
                     <span class="bold">Special marks</span> are any symbol (like the dash &lt;-&gt; and the apostrophe 
-                    &lt;’&gt;) that a syllable contains. These may not be necessarily important when inflecting the words 
-                    but may be very important on how the raw syllables are decoded for accurate printing.
+                    &lt;’&gt;) that a syllable contains.
                 </p>
                 <h2>III. Syntax</h2>
                 <p>
@@ -151,9 +150,10 @@
                     be able to test themselves against, see the next section, IV. Specification Examples.
                 </p>
                 <p>
-                    The example words below are showed syllabified through the use of the interpunct &lt;·&gt; symbol. 
-                    In reality, implementing libraries should be able to take and output un-syllabified words, with the 
-                    syllabification and de-syllabification happening silently in the background.
+                    The example words below are showed syllabified through the use of the interpunct &lt;·&gt; symbol to give 
+                    a better view on how an inflexp-inflection should take place. In reality, implementing libraries should be 
+                    able to take un-syllabified words and also output un-syllabified words, with the syllabification and 
+                    un-syllabification happening silently in the background.
                 </p>
                 <table>
                     <thead>
@@ -176,12 +176,12 @@
                         <tr><td>digit 7</td><td>7</td><td>entire coda repeater/designator</td><td>"sart·pelk·mork".inflect("47:47:47;") --> "art·sart·elk·pelk·erk·mork"<br/>"sart·pelk·mork".inflect("-47:-47:-47;") --> "sart·art·pelk·elk·mork·erk"</td></tr>
                         <tr><td>digit 8</td><td>8</td><td>first sound of coda repeater/designator</td><td>"sart·pelk·mork".inflect("148,148;") --> "sar·pel·sart·pelk·mork"<br/>"sart·pelk·mork".inflect(";148,148") --> "sart·pelk·mork·pel·mor"</td></tr>
                         <tr><td>digit 9</td><td>9</td><td>last sound of coda repeater/designator</td><td>"sart·pelk·mork".inflect(":149,149;") --> "sart·pek·mok·pelk·mork"<br/>"sart·pelk·mork".inflect(":-149,149;") --> "sart·pelk·pek·mok·mork"</td></tr>
-                        <tr><td>dollar sign</td><td>$</td><td>stress designator</td></tr>
-                        <tr><td>at sign</td><td>@</td><td>tone designator</td></tr>
-                        <tr><td>asterisk</td><td>*</td><td>entire body designator</td></tr>
-                        <tr><td>double asterisk</td><td>**</td><td>entire rhyme designator</td></tr>
-                        <tr><td>triple asterisk</td><td>***</td><td>whole syllable designator</td></tr>
-                        <tr><td>tilde followed by digit 0</td><td>~0</td><td>sound magnet</td></tr>
+                        <tr><td>dollar sign</td><td>$</td><td>stress repeater/designator</td><td>"pán·pen".inflect(";$,147") --> "pán·pen·pén"</td></tr>
+                        <tr><td>at sign</td><td>@</td><td>tone repeater/designator</td><td>"pản·pen".inflect("-@,,pon") --> "pản·pen·pỏn"</td></tr>
+                        <tr><td>asterisk</td><td>*</td><td>entire body repeater/designator</td><td>"treiks".inflect("*;") --> "trei·treiks"</td></tr>
+                        <tr><td>double asterisk</td><td>**</td><td>entire rhyme repeater/designator</td><td>"treiks".inflect(";**") --> "treiks·eiks"</td></tr>
+                        <tr><td>triple asterisk</td><td>***</td><td>whole syllable designator</td><td>"treiks".inflect("***+;") --> "treiks·treiks·treiks"</td></tr>
+                        <tr><td>tilde</td><td>~</td><td>sound magnet</td><td>"sin·taks".inflect("-~ing") --> "sin·tak·sing"<br/>"dak·mein·toi".inflect(":~4;") --> "da·kei·mein·toi"<br/>"en·trot".inflect(;24~-) --> "en·tot·rot"</td></tr>
                         <tr><td>tilde followed by dollar sign</td><td>~$</td><td>stress magnet</td></tr>
                         <tr><td>tilde followed by at sign</td><td>~@</td><td>tone magnet</td></tr>
                     </tbody>
