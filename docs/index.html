@@ -42,7 +42,7 @@
                     <span class="code">nucleus: char[]</span>,
                     <span class="code">coda: char[]</span>,
                     <span class="code">stress: int</span>,
-                    <span class="code">tone: char</span>,
+                    <span class="code">tone: int</span>,
                     <span class="code">marks: [char, int][]</span>.
                     Then various inflection methods can be defined to manipulate the syllables and their properties.
                 </p>
@@ -61,6 +61,7 @@
                     <li>Background</li>
                     <li>Terminology</li>
                     <li>Syntax</li>
+                    <li>Limitations</li>
                     <li>Specification Examples</li>
                     <ol type="A">
                         <li>Repetition</li>
@@ -140,6 +141,21 @@
                     <span class="bold">Special marks</span> are any symbol (like the dash &lt;-&gt; and the apostrophe 
                     &lt;’&gt;) that a syllable contains.
                 </p>
+                <p>
+                    An <span class="bold">implementing natural language-agnostic library</span> is a software library that 
+                    implements inflexp through the provision of abstract classes. Its methods deal more with the manipulation 
+                    of the data structures to accomplish the inflection without actually requiring or knowing the 
+                    orthography and irregularities of any natural language. An example of this kind of library is 
+                    <a href="https://github.com/tjmora/inflexer" class="bold">Inflexer</a>.
+                </p>
+                <p>
+                    An <span class="bold">implementing natural language-specific library</span> is a software library that 
+                    implements inflexp but also transforms inflexp's default behavior to better suit the orthography and 
+                    irregularities of its target natural language. This kind of library usually extends the the abstract classes 
+                    provided by an implementing natural language-agnostic library like Inflexer. An example of an implementing 
+                    natural language-specific library is <a href="https://github.com/tjmora/inflexer" class="bold">Halita</a>, 
+                    which is an implementing Philippine language family-specific library.
+                </p>
                 <h2>III. Syntax</h2>
                 <p>
                     The following table defines what each inflexp symbol or sequence of symbols does.
@@ -147,7 +163,7 @@
                 <p>
                     The examples below are just meant to give a quick glimpse on how inflexp should work.
                     For a more definitive list of specification examples that any implementing library should 
-                    be able to test themselves against, see the next section, IV. Specification Examples.
+                    be able to test themselves against, see the section, V. Specification Examples.
                 </p>
                 <p class="note">
                     <span>Note: </span>The example words below are showed syllabified through the use of the interpunct &lt;·&gt; 
@@ -180,7 +196,7 @@
                         <tr>
                             <td>equal sign</td>
                             <td>=</td>
-                            <td>special mark placement designator</td>
+                            <td>special mark placer</td>
                             <td>inflect("sin·taks", "#=#") =&gt; "sin·taks-·sin·taks"</td>
                         </tr>
                         <tr>
@@ -343,8 +359,8 @@
                             <td>dollar sign followed by a number (within the scope of a dot)</td>
                             <td>.$n<br/>$n.</td>
                             <td>stress pusher</td>
-                            <td>inflect("as·ka·don", "sa.t$6-") =&gt; "sa·tás·ka·don"<br/>
-                                inflect("as·ka·don", ";$6.") =&gt; "as·kat·dón"
+                            <td>inflect("as·ka·don", "sa.t$8-") =&gt; "sa·tás·ka·don"<br/>
+                                inflect("as·ka·don", ";$8.") =&gt; "as·kat·dón"
                             </td>
                         </tr>
                         <tr>
@@ -379,9 +395,55 @@
                                 inflect("tre·pỏn", "-!@.") =&gt; "tre·pon"
                             </td>
                         </tr>
+                        <tr>
+                            <td>double exclamation mark (within the scope of a dot)</td>
+                            <td>.!!<br/>!!.</td>
+                            <td>sound cluster suppressor</td>
+                            <td>inflect("vlen·zod", ".!!-") =&gt; "en·zod"<br/>
+                                inflect("vlern·zod", ";!!.:") =&gt; "vle·zod"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>triple exclamation mark</td>
+                            <td>!!!</td>
+                            <td>whole syllable suppressor</td>
+                            <td>inflect("ti·gus·rom", ":!!!;") =&gt; "ti·rom"<br/>
+                                inflect("ti·gus·rom", "~:!!!:~;") =&gt; "tig·srom"
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
-                <h2>IV. Specification Examples</h2>
+                <p>
+                    For stresses, by convention, inflexp defines <span class="code">$0</span> as without stress, and 
+                    <span class="code">$8</span> as with primary stress. Implementing natural language-agnostic libraries 
+                    are encouraged to follow this convention. Implementing natural language-specific libraries, on the other 
+                    hand, are free to define more stress levels as needed (e.g., defining <span class="code">$4</span> as 
+                    secondary stress.) 
+                </p>
+                <p>
+                    For tones, its up to implementing natural language-specific library to define what each tone number 
+                    represents. Implementing natural language-agnostic libraries, on the other hand, may treat inflexp tones as 
+                    mere numbers that needs to be stored and manipulated as required.
+                </p>
+                <p>
+                    The inflexp symbol <span class="code">=</span>, or the special mark placer, though shown in the above
+                    examples to be placing the dash symbol &lt;-&gt;, can actually place any mark. Implementing 
+                    natural language-specific libraries should define what the special mark placer places.
+                </p>
+                <h2>IV. Limitations</h2>
+                <p>
+                    One of the limitations of inflexp is its lack of conditional sub-expressions. For example, if 
+                    a natural language only drop certain consonants and preserves other consonants at the start of the base 
+                    word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
+                    implementing natural language-specific libraries will need to perform the checking and the suppression 
+                    under the hood.
+                </p>
+                <p>
+                    Inflexp has no separate symbols for pitch accent. Implementing libraries specific to pitch-accented 
+                    languages will need to use inflexp's tone number system, <span class="code">@0</span> to 
+                    <span class="code">@9</span> for the designation of pitch accent.
+                </p>
+                <h2>V. Specification Examples</h2>
                 <p>
                     The table below uses base words that are entirely artificial. As such, the words have no special cases 
                     nor irregularities when inflected through inflexp argument-taking methods. Any 
@@ -420,7 +482,7 @@
                         
                     </tbody>
                 </table>
-                <h2>IV. Implementations</h2>
+                <h2>VI. Implementations</h2>
                 <p>
                     <a href="https://github.com/tjmora/inflexer">Inflexer</a> - An orthography-agnostic 
                     JS/TypeScript library that takes inflexp arguments for its inflection methods. 
