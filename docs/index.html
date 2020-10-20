@@ -452,6 +452,15 @@
                                 inflect("ti·gus·rom", "~:!!!:~;") =&gt; "tig·srom"
                             </td>
                         </tr>
+                        <tr>
+                            <td>dashes bounding a scope</td>
+                            <td>-...-</td>
+                            <td>after-first initial infixing expression</td>
+                            <td>inflect("sin·taks", "-um-") =&gt; "sum·in·taks"<br/>
+                                inflect("sin·taks", "-u.m-") =&gt; "su·min·taks"<br/>
+                                inflect("plan·taks", "-in.m-") =&gt; "pin·mlan·taks"
+                            </td>
+                        </tr>
                     </tbody>
                 </table>
                 <h3>B. Notes on stresses, vowel lengths, tones, pitches and special marks</h3>
@@ -493,27 +502,23 @@
                 </p>
                 <h2>V. Specification Examples</h2>
                 <p>
-                    The table below uses base words that are entirely artificial. As such, the words have no special cases 
-                    nor irregularities when inflected through inflexp argument-taking methods. Any 
-                    natural language/orthography-agnostic library should arrive to the same results as shown in the tables 
-                    below when inflecting the same base word with the same inflexp argument in the corresponding row of each 
-                    result. Natural language-specific (non-agnotic) libraries, on the other hand, will necessarily consider any 
-                    irregularity in the words they are taking, with only their default behavior for regular words matching the 
-                    behaviors show in the tables below.
+                    The tables in this section use base words that are entirely artificial. As such, the words have no special 
+                    cases nor irregularities when inflected through inflexp. Any implementing natural language-agnostic library 
+                    should arrive to the same results as shown in the tables below when inflecting the same base word with the 
+                    same inflexp argument in the corresponding row of each result. Implementing natural language-specific 
+                    libraries, on the other hand, will necessarily consider any irregularity in the words they are taking, with 
+                    only their default behavior for regular words matching the behaviors shown in the tables in this section.
                 </p>
                 <p>
-                    The base words and resulting words in the tables below are shown syllabified to better show how the words
-                    should be represented internally in any implementing library. In reality, implementing libraries should 
-                    be able to take un-syllabified words and do their own syllabification of them, and output results in 
+                    The base words and resulting words in the tables in this section are shown syllabified to better show how 
+                    the words should be represented internally in any implementing library. In reality, implementing libraries 
+                    should be able to take un-syllabified words and do their own syllabification of them, and output results in 
                     a valid orthography without syllabification.
                 </p>
                 <p>
-                    The example words in the tables below use the letters &lt;a&gt;, &lt;e&gt;, &lt;i&gt;, &lt;o&gt;, and 
-                    &lt;u&gt; exclusively as the nucleus of syllables. Any other letter or cluster of other letters bounding 
-                    the nucleus are the initial, medial and/or coda. A single letter to the left of a nucleus in a syllable 
-                    is the syllable's initial. If there are two letters to the left of the nucleus, the first one is the initial 
-                    and the second one is the medial. The letter or letters to the right of the nucleus in a syllable is/are the
-                    coda.
+                    The example words in the tables in this section use the letters &lt;a&gt;, &lt;e&gt;, &lt;i&gt;, &lt;o&gt;, 
+                    and &lt;u&gt; exclusively as the nucleus of syllables. Any other letter or cluster of other letters bounding 
+                    the nucleus are the onset and/or coda.
                 </p>
                 <p class="note">
                     <span>Note: </span> The example words in the tables below avoided using digraphs. That is something the 
