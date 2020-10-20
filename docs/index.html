@@ -42,6 +42,7 @@
                     <span class="code">nucleus: char[]</span>,
                     <span class="code">coda: char[]</span>,
                     <span class="code">stress: int</span>,
+                    <span class="code">length: int</span>,
                     <span class="code">tone: int</span>,
                     <span class="code">marks: [char, int][]</span>.
                     Then various inflection methods can be defined to manipulate the syllables and their properties.
@@ -61,6 +62,10 @@
                     <li>Background</li>
                     <li>Terminology</li>
                     <li>Syntax</li>
+                    <ol type="A">
+                        <li>Syntax examples</li>
+                        <li>Notes on stress, long vowels, tones, pitches and special marks</li>
+                    </ol>
                     <li>Limitations</li>
                     <li>Specification Examples</li>
                     <ol type="A">
@@ -134,6 +139,11 @@
                     pronunciation of the nucleus, or changing the tone.
                 </p>
                 <p>
+                    A <span class="bold">vowel length</span> is any shortening or elongation in the pronunciation of a 
+                    syllable's nucleus. In many languages, vowel length is conflated with stress but there are some 
+                    languages where stress is different from vowel lengths.
+                </p>
+                <p>
                     A <span class="bold">tone</span> is a pitch applied to a syllable. In tonal languages like the Chinese 
                     languages, changing the tone of a syllable can change a word into a different word with a different meaning.
                 </p>
@@ -157,6 +167,7 @@
                     which is specific to the Philippine language family.
                 </p>
                 <h2>III. Syntax</h2>
+                <h3>A. Syntax examples</h3>
                 <p>
                     The following table defines what each inflexp symbol or sequence of symbols does.
                 </p>
@@ -298,6 +309,12 @@
                             <td>inflect("pán·pen", ";$,147") =&gt; "pán·pen·pén"</td>
                         </tr>
                         <tr>
+                            <td>double dollar sign</td>
+                            <td>$</td>
+                            <td>vowel length repeater/designator</td>
+                            <td>inflect("kān·ken", ";$$,147") =&gt; "kān·ken·kēn"</td>
+                        </tr>
+                        <tr>
                             <td>at sign</td>
                             <td>@</td>
                             <td>tone repeater/designator</td>
@@ -334,8 +351,16 @@
                             <td>tilde followed by dollar sign</td>
                             <td>~$</td>
                             <td>stress magnet</td>
-                            <td>inflect("da·gán", "-~$on") =&gt; "dagan·ón"<br/>
-                                inflect("da·gán", "-~~$on") =&gt; "daga·nón"
+                            <td>inflect("da·gán", "-~$on") =&gt; "da·gan·ón"<br/>
+                                inflect("da·gán", "-~~$on") =&gt; "da·ga·nón"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>tilde followed by percent sign</td>
+                            <td>~%</td>
+                            <td>vowel length magnet</td>
+                            <td>inflect("fa·tēk", "-~%an") =&gt; "fa·tek·ān"<br/>
+                                inflect("fa·tēk", "-~~%an") =&gt; "fa·te·kān"
                             </td>
                         </tr>
                         <tr>
@@ -359,8 +384,16 @@
                             <td>dollar sign followed by a number (within the scope of a dot)</td>
                             <td>.$n<br/>$n.</td>
                             <td>stress pusher</td>
-                            <td>inflect("as·ka·don", "sa.t$8-") =&gt; "sa·tás·ka·don"<br/>
-                                inflect("as·ka·don", ";$8.") =&gt; "as·kat·dón"
+                            <td>inflect("as·ka·don", "sa.t$4-") =&gt; "sa·tás·ka·don"<br/>
+                                inflect("as·ka·don", ";$4.") =&gt; "as·ka·dón"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>percent sign followed by a number (within the scope of a dot)</td>
+                            <td>.%n<br/>%n.</td>
+                            <td>vowel length pusher</td>
+                            <td>inflect("as·ka·don", "te.m%12-") =&gt; "te·mās·ka·don"<br/>
+                                inflect("as·ka·don", ";%12.") =&gt; "as·ka·dōn"
                             </td>
                         </tr>
                         <tr>
@@ -385,6 +418,14 @@
                             <td>stress suppressor</td>
                             <td>inflect("da·gán", ";!$") =&gt; "da·gan"<br/>
                                 inflect("da·gán", "-!$.") =&gt; "da·gan"
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>exclamation mark followed by percent sign</td>
+                            <td>.!%<br/>!%.</td>
+                            <td>vowel length suppressor</td>
+                            <td>inflect("fa·tēk", ";!$") =&gt; "fa·tek"<br/>
+                                inflect("fa·tēk", ":!$;") =&gt; "fa·tek"
                             </td>
                         </tr>
                         <tr>
@@ -413,22 +454,34 @@
                         </tr>
                     </tbody>
                 </table>
+                <h3>B. Notes on stresses, vowel lengths, tones, pitches and special marks</h3>
                 <p>
-                    For stresses, by convention, inflexp defines <span class="code">$0</span> as without stress, and 
-                    <span class="code">$8</span> as with primary stress. Implementing natural language-agnostic libraries 
-                    are encouraged to follow this convention. Implementing natural language-specific libraries, on the other 
-                    hand, are free to define more stress levels as needed (e.g., defining <span class="code">$4</span> as 
-                    secondary stress.) 
+                    For stresses, inflexp defines <span class="code">$0</span> as without stress, <span class="code">$2</span> 
+                    as with secondary stress, and <span class="code">$4</span> as with primary stress. The stress suppressor
+                    syntax turns a syllable with primary or a secondary stress into a no-stress syllable.
                 </p>
                 <p>
-                    For tones, its up to implementing natural language-specific library to define what each tone number 
-                    represents. Implementing natural language-agnostic libraries, on the other hand, may treat inflexp tones as 
-                    mere numbers that needs to be stored and manipulated as required.
+                    For vowel lengths, inflexp defines <span class="code">%2</span> as a extra-short vowel, 
+                    <span class="code">%4</span> as a half-long vowel, <span class="code">%8</span> as 
+                    regular-length vowel, and <span class="code">%12</span> as a long vowel. The vowel length suppressor 
+                    syntax turns an extra-short or a half-long or a long vowel into a regular-length vowel.
+                </p>
+                <p>
+                    For tones, it is up to implementing natural language-specific library to define what each tone number 
+                    represents (<span class="code">@0</span> to <span class="code">@99</span>). The tone suppressor syntax
+                    turns any tone into whatever the <span class="code">@0</span> represents.
+                </p>
+                <p>
+                    For pitch-accented languages, their pitches must be defined using inflexp's tone number system, as 
+                    described in the previous paragraph.
                 </p>
                 <p>
                     The inflexp symbol <span class="code">=</span>, or the special mark placer, though shown in the above
                     examples to be placing the dash symbol &lt;-&gt;, can actually place any mark. Implementing 
-                    natural language-specific libraries should define what the special mark placer places.
+                    natural language-specific libraries should define what the special mark placer places. It can even be 
+                    set to be conditional, that given a particular condition it places a mark, but given another condition
+                    it places another mark. Of course these conditional placements cannot be done through the inflexp syntax
+                    alone. Condition checking and the mark placement will need to take place under the hood.
                 </p>
                 <h2>IV. Limitations</h2>
                 <p>
@@ -437,11 +490,6 @@
                     word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
                     implementing natural language-specific libraries will need to perform the checking and the suppression 
                     under the hood.
-                </p>
-                <p>
-                    Inflexp has no separate symbols for pitch accent. Implementing libraries specific to pitch-accented 
-                    languages will need to use inflexp's tone number system, <span class="code">@0</span> to 
-                    <span class="code">@9</span> for the designation of pitch accent.
                 </p>
                 <h2>V. Specification Examples</h2>
                 <p>
