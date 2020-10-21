@@ -59,15 +59,15 @@
                 <p class="note"><span>Note:</span> Implementing libraries may have a different license.</p>
                 <h2>Table of Contents</h2>
                 <ol type="I" class="tableOfContents">
-                    <li>Background</li>
-                    <li>Terminology</li>
-                    <li>Syntax</li>
+                    <li><a href="#Background">Background</a></li>
+                    <li><a href="#Terminology">Terminology</a></li>
+                    <li><a href="#Syntax">Syntax</a></li>
                     <ol type="A">
-                        <li>Syntax examples</li>
-                        <li>Notes on stress, long vowels, tones, pitches and special marks</li>
+                        <li><a href="#Syntax_examples">Syntax examples</a></li>
+                        <li><a href="#Notes_on">Notes on stress, long vowels, tones, pitches and special marks</a></li>
                     </ol>
-                    <li>Limitations</li>
-                    <li>Specification Examples</li>
+                    <li><a href="#Limitations">Limitations</a></li>
+                    <li><a href="#Specification_Examples">Specification Examples</a></li>
                     <ol type="A">
                         <li>Repetition</li>
                         <li>Prefixation</li>
@@ -76,9 +76,9 @@
                         <li>Sound Changes</li>
                         <li>Precedence</li>
                     </ol>
-                    <li>Implementations</li>
+                    <li><a href="#Implementations">Implementations</a></li>
                 </ol>
-                <h2>I. Background</h2>
+                <h2 id="Background">I. Background</h2>
                 <p>
                     <span class="bold">Inflexp</span> originally arose from another open-source natural language project, 
                     <a href="https://github.com/tjmora" class="bold">Halita</a>. Halita is a word-inflection and -deinflection 
@@ -96,7 +96,7 @@
                     Inflexer</a>, and rewritten to reflect their new purpose. This very document serves to standardize the 
                     specification of the inflection expression used by Inflexer.
                 </p>
-                <h2>II. Terminology</h2>
+                <h2 id="Terminology">II. Terminology</h2>
                 <p>
                     A <span class="bold">character</span> is a symbol or glyph, which can be a letter, a number, an ideogram,
                     a pictogram, a punctuation mark or any other special mark.
@@ -166,8 +166,8 @@
                     natural language-specific library is <a href="https://github.com/tjmora/inflexer" class="bold">Halita</a>, 
                     which is specific to the Philippine language family.
                 </p>
-                <h2>III. Syntax</h2>
-                <h3>A. Syntax examples</h3>
+                <h2 id="Syntax">III. Syntax</h2>
+                <h3 id="Syntax_examples">A. Syntax examples</h3>
                 <p>
                     The following table defines what each inflexp symbol or sequence of symbols does.
                 </p>
@@ -400,7 +400,7 @@
                             <td>at sign followed by a number (within the scope of a dot)</td>
                             <td>.@n<br/>@n.</td>
                             <td>tone pusher</td>
-                            <td>inflect("tre·pon", ";@5.") =&gt; "tre·pỏn"</td>
+                            <td>inflect("tre·pon", ";@2.") =&gt; "tre·pỏn"</td>
                         </tr>
                         <tr>
                             <td>exclamation mark (within scope of a dot)</td>
@@ -463,7 +463,7 @@
                         </tr>
                     </tbody>
                 </table>
-                <h3>B. Notes on stresses, vowel lengths, tones, pitches and special marks</h3>
+                <h3 id="Notes_on">B. Notes on stresses, vowel lengths, tones, pitches and special marks</h3>
                 <p>
                     For stresses, inflexp defines <span class="code">$0</span> as without stress, <span class="code">$2</span> 
                     as with secondary stress, and <span class="code">$4</span> as with primary stress. The stress suppressor
@@ -492,7 +492,7 @@
                     it places another mark. Of course these conditional placements cannot be done through the inflexp syntax
                     alone. Condition checking and the mark placement will need to take place under the hood.
                 </p>
-                <h2>IV. Limitations</h2>
+                <h2 id="Limitations">IV. Limitations</h2>
                 <p>
                     One of the limitations of inflexp is its lack of conditional sub-expressions. For example, if 
                     a natural language only drop certain consonants and preserves other consonants at the start of the base 
@@ -500,7 +500,7 @@
                     implementing natural language-specific libraries will need to perform the checking and the suppression 
                     within their implementation methods.
                 </p>
-                <h2>V. Specification Examples</h2>
+                <h2 id="Specification_Examples">V. Specification Examples</h2>
                 <p>
                     Any implementing natural language-agnostic library should implement test classes (that extend their 
                     main abstract classes) and test their methods against all the specification examples contained in this
@@ -523,6 +523,18 @@
                     and &lt;u&gt; exclusively as the nucleus of syllables. Any other letter or cluster of other letters bounding 
                     the nucleus are the onset and/or coda.
                 </p>
+                <p>
+                    Solely for the purposes of this specification, the following diacritical marks represent the following:<br/>
+                    none (e.g., a) - no stress, regular-length vowel, or <span class="code">@0</span> tone<br/>
+                    grave above (e.g., à) - with secondary stress<br/>
+                    acute above (e.g., á) - with primary stress<br/>
+                    breve above (e.g., ă) - extra-short vowel<br/>
+                    dot above (e.g., ȧ) - half-long vowel<br/>
+                    bar above (e.g., ā) - long vowel<br/>
+                    dot below (e.g., ạ) - <span class="code">@1</span> tone<br/>
+                    hook above (e.g., ả) - <span class="code">@2</span> tone<br/>
+                    tilde above (e.g., ã) - <span class="code">@3</span> tone
+                </p>
                 <p class="note">
                     <span>Note: </span> The example words in the tables below avoided using digraphs. That is something the 
                     implementing libraries may also need to take into account.
@@ -538,7 +550,7 @@
                         
                     </tbody>
                 </table>
-                <h2>VI. Implementations</h2>
+                <h2 id="Implementations">VI. Implementations</h2>
                 <p>
                     <a href="https://github.com/tjmora/inflexer">Inflexer</a> - An orthography-agnostic 
                     JS/TypeScript library that takes inflexp arguments for its inflection methods. 

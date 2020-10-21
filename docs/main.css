@@ -14,6 +14,9 @@ a {
 a::after {
     content: "🔗";
 }
+.tableOfContents a::after {
+    content: "";
+}
 .bold {
     font-weight: bold;
 }
