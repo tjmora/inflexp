@@ -498,22 +498,25 @@
                     a natural language only drop certain consonants and preserves other consonants at the start of the base 
                     word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
                     implementing natural language-specific libraries will need to perform the checking and the suppression 
-                    under the hood.
+                    within their implementation methods.
                 </p>
                 <h2>V. Specification Examples</h2>
                 <p>
-                    The tables in this section use base words that are entirely artificial. As such, the words have no special 
-                    cases nor irregularities when inflected through inflexp. Any implementing natural language-agnostic library 
-                    should arrive to the same results as shown in the tables below when inflecting the same base word with the 
-                    same inflexp argument in the corresponding row of each result. Implementing natural language-specific 
-                    libraries, on the other hand, will necessarily consider any irregularity in the words they are taking, with 
-                    only their default behavior for regular words matching the behaviors shown in the tables in this section.
+                    Any implementing natural language-agnostic library should implement test classes (that extend their 
+                    main abstract classes) and test their methods against all the specification examples contained in this
+                    section. Only those that successfully pass all the tests against all these specification examples can be 
+                    considered to be full-pledged implementation of inflexp.
+                </p>
+                <p>
+                    Any implementing natural language-specific library, on the other hand, does not need to test itself 
+                    against all these specification examples. They are simply encouraged to preserve many of inflexp's 
+                    syntax patterns and other definitions as conventions of their libraries.
                 </p>
                 <p>
                     The base words and resulting words in the tables in this section are shown syllabified to better show how 
-                    the words should be represented internally in any implementing library. In reality, implementing libraries 
-                    should be able to take un-syllabified words and do their own syllabification of them, and output results in 
-                    a valid orthography without syllabification.
+                    the words should be represented internally in any implementing library. In reality though, implementing 
+                    libraries should be able to take un-syllabified words and do their own syllabification of them, and output 
+                    results in a valid orthography without syllabification.
                 </p>
                 <p>
                     The example words in the tables in this section use the letters &lt;a&gt;, &lt;e&gt;, &lt;i&gt;, &lt;o&gt;, 
