@@ -30,8 +30,8 @@
                     <span class="bold">Inflection Expressions</span>, or <span class="bold">inflexp</span> for short, are a
                     sequence of characters that define the rules or steps that should be undertaken by an implementing software 
                     library in inflecting a base or root word of a natural language. Inflexp has character sequences for 
-                    prefixation, infixation, suffixation, repetition (of the word or its syllables), sound change (including 
-                    stress and tone change), sound dropping, supplantation, and others.
+                    repetition (of the word or its syllables), prefixation, suffixation, infixation, sound shifting (including 
+                    stress and tone shifting), sound dropping, and others.
                 </p>
                 <p>
                     This specification is agnostic on how libraries should implement their data structures and method logic. 
@@ -195,26 +195,28 @@
                         <tr>
                             <td>hash sign</td>
                             <td>#</td>
-                            <td>whole base word designator</td>
-                            <td>inflect("sin·taks", "#") =&gt; "sin·taks"</td>
-                        </tr>
-                        <tr>
-                            <td>plus sign</td>
-                            <td>+</td>
-                            <td>duplicator</td>
-                            <td>inflect("sin·taks", "#+") =&gt; "sin·taks·sin·taks"</td>
+                            <td>whole base word repeater/designator</td>
+                            <td>inflect("sin·taks", "#") =&gt; "sin·taks·sin·taks"</td>
                         </tr>
                         <tr>
                             <td>equal sign</td>
                             <td>=</td>
                             <td>special mark placer</td>
-                            <td>inflect("sin·taks", "#=#") =&gt; "sin·taks-·sin·taks"</td>
+                            <td>inflect("sin·taks", "=#") =&gt; "sin·taks·-sin·taks"<br/>
+                                inflect("sin·taks", "#=") =&gt; "sin·taks-·sin·taks"
+                            </td>
                         </tr>
                         <tr>
                             <td>dash</td>
                             <td>-</td>
                             <td>affixation direction designator</td>
                             <td>inflect("sin·taks", "de-") =&gt; "de·sin·taks"<br/>"sin·taks".inflect("-ing") =&gt; "sin·taks·ing"</td>
+                        </tr>
+                        <tr>
+                            <td>plus sign</td>
+                            <td>+</td>
+                            <td>duplicator</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>semicolon</td>
@@ -540,14 +542,49 @@
                     implementing libraries may also need to take into account.
                 </p>
                 <h3>A. Repetitions</h3>
-                <table>
+                <table class="numbered">
                     <thead>
                         <tr>
                             <td>Base Word</td><td>Applied inflexp</td><td>Resulting Word</td>
                         </tr>
                     </thead>
                     <tbody>
-                        
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#</td><td>tleimp·kraigs·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>=#</td><td>tleimp·kraigs·-tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#=</td><td>tleimp·kraigs-·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>##</td><td>tleimp·kraigs·tleimp·kraigs·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#+</td><td>tleimp·kraigs·tleimp·kraigs·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>=#+</td><td>tleimp·kraigs·-tleimp·kraigs·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#+=</td><td>tleimp·kraigs·tleimp·kraigs-·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#=+</td><td>tleimp·kraigs--·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>=#=#</td><td>tleimp·kraigs·-tleimp·kraigs·-tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#=#=</td><td>tleimp·kraigs-·tleimp·kraigs-·tleimp·kraigs</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>=##=</td><td>tleimp·kraigs·-tleimp·kraigs·tleimp·kraigs-</td>
+                        </tr>
+                        <tr>
+                            <td>tleimp·kraigs</td><td>#==#</td><td>tleimp·kraigs·tleimp·kraigs-·-tleimp·kraigs</td>
+                        </tr>
                     </tbody>
                 </table>
                 <h2 id="Implementations">VI. Implementations</h2>
@@ -563,6 +600,11 @@
                 <p>
                     <a href="https://github.com/tjmora/inflexer-py">Inflexer-py</a> - An orthography-agnostic 
                     Python 3 library that takes inflexp arguments for its inflection methods. 
+                </p>
+                <p class="sub"><a href="https://github.com/tjmora/halita-py">Halita-py</a> - An inflection and 
+                    de-inflection JS/TypeScript library for Philippine languages. It extends Inflexer methods for a more 
+                    accurate inflection and de-inflection of Philippine native words. Halita's own methods can take inflexp 
+                    arguments.
                 </p>
             </div>
         </div>
