@@ -72,9 +72,8 @@
                         <li><a href="#Repetitions">Repetitions</a></li>
                         <li><a href="#Prefixation">Prefixation</a></li>
                         <li><a href="#Suffixation">Suffixation</a></li>
-                        <li>Infixation</li>
-                        <li>Sound Changes</li>
-                        <li>Precedence</li>
+                        <li><a href="#Infixation">Infixation</a></li>
+                        <li><a href="#Multifaceted">Multifaceted Inflection</a></li>
                     </ol>
                     <li><a href="#Implementations">Implementations</a></li>
                 </ol>
@@ -311,22 +310,22 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>dollar sign</td>
-                            <td>$</td>
+                            <td>double dollar sign</td>
+                            <td>$$</td>
                             <td>stress repeater/designator</td>
-                            <td>inflect("pán·pen", ";$,147") =&gt; "pán·pen·pén"</td>
+                            <td>inflect("pán·pen", ";14$$:") =&gt; "pán·pá·pen"</td>
                         </tr>
                         <tr>
-                            <td>percent sign</td>
-                            <td>%</td>
+                            <td>double percent sign</td>
+                            <td>%%</td>
                             <td>vowel length repeater/designator</td>
-                            <td>inflect("kān·ken", ";%,147") =&gt; "kān·ken·kēn"</td>
+                            <td>inflect("kan·kēn", ";%%147") =&gt; "kan·kēn·kē"</td>
                         </tr>
                         <tr>
-                            <td>at sign</td>
-                            <td>@</td>
+                            <td>double at sign</td>
+                            <td>@@</td>
                             <td>tone repeater/designator</td>
-                            <td>inflect("pản·pen", "-@,,pon") =&gt; "pản·pen·pỏn"</td>
+                            <td>inflect("pản·pen", "47@;") =&gt; "pản·ản·pen"</td>
                         </tr>
                         <tr>
                             <td>asterisk</td>
@@ -463,10 +462,12 @@
                         <tr>
                             <td>dashes bounding a scope</td>
                             <td>-...-</td>
-                            <td>after-first initial infixing expression</td>
-                            <td>inflect("sin·taks", "-um-") =&gt; "sum·in·taks"<br/>
-                                inflect("sin·taks", "-u.m-") =&gt; "su·min·taks"<br/>
-                                inflect("plan·taks", "-in.m-") =&gt; "pin·mlan·taks"
+                            <td>infixing expression</td>
+                            <td>inflect("plan·traks", "-in-") =&gt; "pin·lan·traks"
+                                inflect("plan·traks", "--in-") =&gt; "plin·an·traks"
+                                inflect("plan·traks", "--i.n-") =&gt; "pli·nan·traks"
+                                inflect("plan·traks", "-.in-") =&gt; "plan·tin·raks"
+                                inflect("plan·traks", "--.i.n-") =&gt; "plan·tri.naks"
                             </td>
                         </tr>
                     </tbody>
@@ -1360,7 +1361,7 @@
                             <td>sa·pó·tan·sàr</td><td>:**::**;</td><td>sa·po·pó·tan·sa·sàr</td>
                         </tr>
                         <tr>
-                            <td>sa·pó·tan·sàr</td><td>:**$::$**;</td><td>sa·pó·pó·tan·sà·sàr</td>
+                            <td>sa·pó·tan·sàr</td><td>:**$$::$$**;</td><td>sa·pó·pó·tan·sà·sàr</td>
                         </tr>
                         <tr>
                             <td>sa·pó·tan·sàr</td><td>:**~$::**~$;</td><td>sa·pó·po·tan·sà·sar</td>
@@ -1372,7 +1373,7 @@
                             <td>bă·bė·bī</td><td>**:14:**;</td><td>ba·bă·be·bė·bi·bī</td>
                         </tr>
                         <tr>
-                            <td>bă·bė·bī</td><td>%**:%14:**%;</td><td>bă·bă·bė·bė·bī·bī</td>
+                            <td>bă·bė·bī</td><td>%%**:%%14:**%%;</td><td>bă·bă·bė·bė·bī·bī</td>
                         </tr>
                         <tr>
                             <td>bă·bė·bī</td><td>-~%**:~%14:**~%;</td><td>ba·bă·bă·bė·bī·bi</td>
@@ -1381,7 +1382,7 @@
                             <td>bạ·kỏ·dũ</td><td>;**:26:**</td><td>bạ·ba·kỏ·ko·dũ·du</td>
                         </tr>
                         <tr>
-                            <td>bạ·kỏ·dũ</td><td>;**@:@26:@**</td><td>bạ·bạ·kỏ·kỏ·dũ·dũ</td>
+                            <td>bạ·kỏ·dũ</td><td>;**@@:@@26:@@**</td><td>bạ·bạ·kỏ·kỏ·dũ·dũ</td>
                         </tr>
                         <tr>
                             <td>bạ·kỏ·dũ</td><td>;~@**:~@26:_**~@</td><td>ba·bạ·ko·kỏ·dũ·du</td>
@@ -1751,6 +1752,47 @@
                         </tr>
                         <tr>
                             <td>ra·re·ro</td><td>-t!.s!!.v!!!.od</td><td>ta·se·v·od</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3 id="Infixation">Infixation</h3>
+                <p>
+                    Base words and result words here are shown syllabified using the interpunct &gt;·&lt; symbol. 
+                    Any multi-syllabic suffix inflexp, however, is not shown syllabified.
+                </p>
+                <table class="numbered">
+                    <thead>
+                        <tr>
+                            <td>Base Word</td><td>Applied inflexp</td><td>Resulting Word</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>plan·traks</td><td>-in-</td><td>pin·lan·traks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--in-</td><td>plin·an·traks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--i.n-</td><td>pli·nan·traks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--in.m-</td><td>plin·man·traks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>-.in-</td><td>plan·tin·raks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>-.i.n-</td><td>plan·ti·nraks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--.in-</td><td>plan·trin·aks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--.i.n-</td><td>plan·tri·naks</td>
+                        </tr>
+                        <tr>
+                            <td>plan·traks</td><td>--.in.m-</td><td>plan·trin·maks</td>
                         </tr>
                     </tbody>
                 </table>
