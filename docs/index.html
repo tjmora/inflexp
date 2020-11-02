@@ -66,7 +66,6 @@
                         <li><a href="#Syntax_examples">Syntax examples</a></li>
                         <li><a href="#Notes_on">Notes on stress, long vowels, tones, pitches and special marks</a></li>
                     </ol>
-                    <li><a href="#Limitations">Limitations</a></li>
                     <li><a href="#Specification_Examples">Specification Examples</a></li>
                     <ol type="A">
                         <li><a href="#Repetitions">Repetitions</a></li>
@@ -75,6 +74,7 @@
                         <li><a href="#Infixation">Infixation</a></li>
                         <li><a href="#Multifaceted">Multifaceted Inflection</a></li>
                     </ol>
+                    <li><a href="#Limitations">Limitations and Considerations</a></li>
                     <li><a href="#Implementations">Implementations</a></li>
                 </ol>
                 <h2 id="Background">I. Background</h2>
@@ -173,7 +173,7 @@
                 <p>
                     The examples below are just meant to give a quick glimpse on how inflexp should work.
                     For a more definitive list of specification examples that any implementing library should 
-                    be able to test themselves against, see the section, V. Specification Examples.
+                    be able to test themselves against, see the section, IV. Specification Examples.
                 </p>
                 <p class="note">
                     <span>Note: </span>The example words below are showed syllabified through the use of the interpunct &lt;·&gt; 
@@ -501,15 +501,7 @@
                     it places another mark. Of course these conditional placements cannot be done through the inflexp syntax
                     alone. Condition checking and the mark placement will need to take place under the hood.
                 </p>
-                <h2 id="Limitations">IV. Limitations</h2>
-                <p>
-                    One of the limitations of inflexp is its lack of conditional sub-expressions. For example, if 
-                    a natural language only drop certain consonants and preserves other consonants at the start of the base 
-                    word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
-                    implementing natural language-specific libraries will need to perform the checking and the suppression 
-                    within their implementation methods.
-                </p>
-                <h2 id="Specification_Examples">V. Specification Examples</h2>
+                <h2 id="Specification_Examples">IV. Specification Examples</h2>
                 <p>
                     Any implementing natural language-agnostic library should implement test classes (that extend their 
                     main abstract classes) and test their methods against all the specification examples contained in this
@@ -1786,6 +1778,9 @@
                             <td>plan·traks</td><td>-.i.n-</td><td>plan·ti·nraks</td>
                         </tr>
                         <tr>
+                            <td>plan·traks</td><td>-.i.n!-</td><td>plan·ti·naks</td>
+                        </tr>
+                        <tr>
                             <td>plan·traks</td><td>--.in-</td><td>plan·trin·aks</td>
                         </tr>
                         <tr>
@@ -1794,8 +1789,69 @@
                         <tr>
                             <td>plan·traks</td><td>--.in.m-</td><td>plan·trin·maks</td>
                         </tr>
+                        <tr>
+                            <td>gaf·gef·gof</td><td>-..i%12.s-</td><td>gaf·gef·gī·sof</td>
+                        </tr>
+                        <tr>
+                            <td>gaf·gef·gof</td><td>-..u.$4-</td><td>gaf·gef·gu·óf</td>
+                        </tr>
                     </tbody>
                 </table>
+                <h3 id="Multifaceted">Multifaceted Inflection</h3>
+                <p>
+                    Base words and result words here are shown syllabified using the interpunct &gt;·&lt; symbol. 
+                    Any multi-syllabic suffix inflexp, however, is not shown syllabified.
+                </p>
+                <table class="numbered">
+                    <thead>
+                        <tr>
+                            <td>Base Word</td><td>Applied inflexp</td><td>Resulting Word</td>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>sreind·flaust</td><td>uzi.t!--~or</td><td>u·zi·treind·flaus·tor</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>uzi.$2--e.v!-</td><td>u·zi·sè·veind·flaus·tor</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>uzi.$2---e.v-</td><td>u·zi·srè·veind·flaus·tor</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>-o.f--!.ai</td><td>so·freind·flaus·ai</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>--o.f--!!.ai</td><td>sro·feind·flau·ai</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>uzi.t--o.f--!.ai</td><td>u·zi·tso·freind·flaus·ai</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>uzi.t!---o.f--!!.ai</td><td>u·zi·tro·feind·flau·ai</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h2 id="Limitations">V. Limitations and Considerations</h2>
+                <p>
+                    One of the limitations of inflexp is its lack of conditional sub-expressions. For example, if 
+                    a natural language only drop certain consonants and preserves other consonants at the start of the base 
+                    word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
+                    implementing natural language-specific libraries will need to perform the checking and the suppression 
+                    within their implementation methods.
+                </p>
+                <p>
+                    Digraphs, glottal stops and other orthographic features need to be addressed under the hood by 
+                    implementing language-specific libraries. Digraphs and glottal stops for example can be represented 
+                    internally by a single character (like their own IPA character), with their real-world effect 
+                    only realized when decoding the data structure in the proper orthography.
+                </p>
+                <p>
+                    While this specification assumes that multiphthongs are always the nucleus, implementing natural 
+                    language-specific libraries are free not to follow this. They may instead treat the latter element 
+                    of a multiphthong as consonant coda, for example. There are certainly cases where treating the latter 
+                    element of a multiphthong as a coda is more beneficial.
+                </p>
                 <h2 id="Implementations">VI. Implementations</h2>
                 <p>
                     <a href="https://github.com/tjmora/inflexer">Inflexer</a> - An orthography-agnostic 
