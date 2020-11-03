@@ -1837,20 +1837,20 @@
                     One of the limitations of inflexp is its lack of conditional sub-expressions. For example, if 
                     a natural language only drop certain consonants and preserves other consonants at the start of the base 
                     word when prefixed with a particular prefix, there is no inflexp that can tell that rule. Instead, 
-                    implementing natural language-specific libraries will need to perform the checking and the suppression 
+                    implementing natural language-specific libraries will need to perform the checking and the sound change 
                     within their implementation methods.
                 </p>
                 <p>
                     Digraphs, glottal stops and other orthographic features need to be addressed under the hood by 
                     implementing language-specific libraries. Digraphs and glottal stops for example can be represented 
-                    internally by a single character (like their own IPA character), with their real-world effect 
+                    internally by a single character (like their own IPA character), with their real-world representation 
                     only realized when decoding the data structure in the proper orthography.
                 </p>
                 <p>
                     While this specification assumes that multiphthongs are always the nucleus, implementing natural 
                     language-specific libraries are free not to follow this. They may instead treat the latter element 
-                    of a multiphthong as consonant coda, for example. There are certainly cases where treating the latter 
-                    element of a multiphthong as a coda is more beneficial.
+                    of a multiphthong as consonant coda (e.g. &lt;w&gt;, &lt;y&gt;), for example. In many natural languages, 
+                    treating the latter element of a diphthong as a coda is actually more efficient.
                 </p>
                 <h2 id="Implementations">VI. Implementations</h2>
                 <p>
