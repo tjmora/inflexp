@@ -72,7 +72,7 @@
                         <li><a href="#Prefixation">Prefixation</a></li>
                         <li><a href="#Suffixation">Suffixation</a></li>
                         <li><a href="#Infixation">Infixation</a></li>
-                        <li><a href="#Multifaceted">Multifaceted Inflection</a></li>
+                        <li><a href="#Integrative">Integrative Inflection</a></li>
                     </ol>
                     <li><a href="#Limitations">Limitations and Considerations</a></li>
                     <li><a href="#Implementations">Implementations</a></li>
@@ -1760,47 +1760,54 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>plan·traks</td><td>-in-</td><td>pin·lan·traks</td>
+                            <td>plan·traks</td><td>|in|</td><td>pin·lan·traks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--in-</td><td>plin·an·traks</td>
+                            <td>plan·traks</td><td>||in|</td><td>plin·an·traks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--i.n-</td><td>pli·nan·traks</td>
+                            <td>plan·traks</td><td>||i.n|</td><td>pli·nan·traks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--in.m-</td><td>plin·man·traks</td>
+                            <td>plan·traks</td><td>||in.m|</td><td>plin·man·traks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>-.in-</td><td>plan·tin·raks</td>
+                            <td>plan·traks</td><td>|.in|</td><td>plan·tin·raks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>-.i.n-</td><td>plan·ti·nraks</td>
+                            <td>plan·traks</td><td>|.i.n|</td><td>plan·ti·nraks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>-.i.n!-</td><td>plan·ti·naks</td>
+                            <td>plan·traks</td><td>|.i.n!|</td><td>plan·ti·naks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--.in-</td><td>plan·trin·aks</td>
+                            <td>plan·traks</td><td>||.in|</td><td>plan·trin·aks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--.i.n-</td><td>plan·tri·naks</td>
+                            <td>plan·traks</td><td>||.i.n|</td><td>plan·tri·naks</td>
                         </tr>
                         <tr>
-                            <td>plan·traks</td><td>--.in.m-</td><td>plan·trin·maks</td>
+                            <td>plan·traks</td><td>||.in.m|</td><td>plan·trin·maks</td>
                         </tr>
                         <tr>
-                            <td>gaf·gef·gof</td><td>-..i%12.s-</td><td>gaf·gef·gī·sof</td>
+                            <td>gaf·gef·gof</td><td>|..i%12.s|</td><td>gaf·gef·gī·sof</td>
                         </tr>
                         <tr>
-                            <td>gaf·gef·gof</td><td>-..u.$4-</td><td>gaf·gef·gu·óf</td>
+                            <td>gaf·gef·gof</td><td>|..u.$4|</td><td>gaf·gef·gu·óf</td>
                         </tr>
                     </tbody>
                 </table>
-                <h3 id="Multifaceted">Multifaceted Inflection</h3>
+                <h3 id="Integrative">Integrative Inflection</h3>
                 <p>
                     Base words and result words here are shown syllabified using the interpunct &gt;·&lt; symbol. 
                     Any multi-syllabic suffix inflexp, however, is not shown syllabified.
+                </p>
+                <p>
+                    For all the specification examples below, the <span class="bold">default order of precedence</span> on 
+                    which affixation will be executed first are as follows: <span class="bold">r</span>epetition &gt; 
+                    <span class="bold">i</span>nfixation &gt; <span class="bold">p</span>refixation &gt; 
+                    <span class="bold">s</span>uffixation. To change the order of precedence, use the 
+                    <span class="code">/</span> expression.
                 </p>
                 <table class="numbered">
                     <thead>
@@ -1810,25 +1817,31 @@
                     </thead>
                     <tbody>
                         <tr>
-                            <td>sreind·flaust</td><td>uzi.t!--~or</td><td>u·zi·treind·flaus·tor</td>
+                            <td>sreind·flaust</td><td>zi.t!-**;</td><td>zi·trei·sreind·flaust</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>uzi.$2--e.v!-</td><td>u·zi·sè·veind·flaus·tor</td>
+                            <td>sreind·flaust</td><td>zi.t!-|ef.k$4|</td><td>zi·tef·kréind·flaust</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>uzi.$2---e.v-</td><td>u·zi·srè·veind·flaus·tor</td>
+                            <td>sreind·flaust</td><td>zi.t!-|ef.k$4|/pr</td><td>zef·kí·treind·flaust</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>-o.f--!.ai</td><td>so·freind·flaus·ai</td>
+                            <td>sreind·flaust</td><td>zi.t!--~or</td><td>zi·treind·flaus·tor</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>--o.f--!!.ai</td><td>sro·feind·flau·ai</td>
+                            <td>sreind·flaust</td><td>||u.p|;~47</td><td>sru·peind·flaus·taust</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>uzi.t--o.f--!.ai</td><td>u·zi·tso·freind·flaus·ai</td>
+                            <td>sreind·flaust</td><td>|u.p|-@3.el</td><td>su·preind·flãust·el</td>
                         </tr>
                         <tr>
-                            <td>sreind·flaust</td><td>uzi.t!---o.f--!!.ai</td><td>u·zi·tro·feind·flau·ai</td>
+                            <td>sreind·flaust</td><td>:***;-@3.el</td><td>sreind·flaust·flãust·el</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>zi-|i.n|24;-~or</td><td>zi·si·nei·sreind·flaus·tor</td>
+                        </tr>
+                        <tr>
+                            <td>sreind·flaust</td><td>zi-|i.n|24;-~or/spir</td><td>zi·zi·ni·sreind·flaus·tor</td>
                         </tr>
                     </tbody>
                 </table>
