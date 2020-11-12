@@ -1,11 +1,11 @@
-#Specification
+## Specification
 
 https://tjmora.github.io/index.html
 
-#Specification Examples
+## Specification Examples
 
 https://tjmora.github.io/spec-examples.json
 
-#License
+## License
 
 CC0
