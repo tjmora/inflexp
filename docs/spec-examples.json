@@ -327,8 +327,9 @@
     ["pleiks·va","kes.r!!@1-","kes·rẹiks·va"],
     ["pleiks·va","ke.sr!!@2-","ke·srẻiks·va"],
     ["pleiks·va","meke.s!!@3-","me·ke·sẽiks·va"],
-    ["oi·ka","a.p!-","a·pi·ka"],
-    ["oi·ka","a.p!!-","a·p·ka"],
+    ["oi·ka","a.p-","a·poi·ka"],
+    ["oi·ka","a.p!-","a·poi·ka"],
+    ["oi·ka","a.p!!-","a·poi·ka"],
     ["oi·ka","a.p!!!-","a·p·ka"],
     ["ra·re·ro","do.t.s.v-","do·tra·sre·vro"],
     ["ra·re·ro","do.t!.s!!.v!!!-","do·ta·se·v"],
@@ -385,8 +386,9 @@
     ["in·kaurp","-@2!!ts.on","in·kảuts·on"],
     ["in·kaurp","-@3!!ts.onis","in·kãuts·o·nis"],
     ["a·koi","-m.pa","a·koim·pa"],
-    ["a·koi","-!m.pa","a·kom·pa"],
-    ["a·koi","-!!m.pa","a·m·pa"],
+    ["a·koi","-!m.pa","a·koim·pa"],
+    ["a·koi","-!!m.pa","a·koim·pa"],
+    ["a·koi","-!!!m.pa","a·m·pa"],
     ["ras·res·ros","-t.l.r.od","rast·resl·rosr·od"],
     ["ras·res·ros","-!t.!!l.!!!r.od","rat·rel·r·od"]
 ]
