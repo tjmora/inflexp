@@ -484,8 +484,8 @@
     ["pláins·tak·sin","|no~$1..|","nó·plains·tak·sin"],
     ["tìn·dom","|1a~$.r|","tà·rin·dom"],
     ["tĭn·dom","|.1~%a.r|","tin·dă·rom"],
-    ["tin·dȏm","|1a~%.r|","ta·rȋn·dom"],
-    ["tin·dōm","|1a~%.r|","tan·dā·rom"],
+    ["tin·dȏm","|1a.r~%|","ta·rȋn·dom"],
+    ["tin·dōm","|.1a~%.r|","tin·dā·rom"],
     ["tịn·dom","|~@ar7|","tin·dọarm"],
     ["tin·dỏm","|ar~@7.|","tỉarn·dom"],
     ["tin·dõm","|ar~@7.|","tĩarn·dom"]
