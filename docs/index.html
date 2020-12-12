@@ -23,7 +23,7 @@
                 <h3 class="top">Change Log:</h3>
                 <p><a href="https://github.com/tjmora/inflexp/commits/main">On Github</a></p>
                 <h3 class="top">Last updated:</h3>
-                <p>12 December 2020</p>
+                <p>13 December 2020</p>
                 <hr/>
                 <h2>Abstract</h2>
                 <p>
@@ -210,7 +210,14 @@
                             <td>dash</td>
                             <td>-</td>
                             <td>affixation direction designator</td>
-                            <td>inflect("sin·taks", "de-") =&gt; "de·sin·taks"<br/>"sin·taks".inflect("-ing") =&gt; "sin·taks·ing"</td>
+                            <td>inflect("sin·taks", "de-") =&gt; "de·sin·taks"<br/>
+                                inflect("sin·taks","-ing") =&gt; "sin·taks·ing"</td>
+                        </tr>
+                        <tr>
+                            <td>underscore</td>
+                            <td>_</td>
+                            <td>skip to other end designator</td>
+                            <td></td>
                         </tr>
                         <tr>
                             <td>plus sign</td>
@@ -255,7 +262,7 @@
                             <td>2</td>
                             <td>initial repeater/designator</td>
                             <td>inflect("klubs·trolp", "24;") =&gt; "ku·klubs·trolp"<br/>
-                                inflect("klubs·trolp", "-24;") =&gt; "klubs·ku·trolp"
+                                inflect("klubs·trolp", "_24;") =&gt; "klubs·ku·trolp"
                             </td>
                         </tr>
                         <tr>
@@ -291,7 +298,7 @@
                             <td>7</td>
                             <td>entire coda repeater/designator</td>
                             <td>inflect("sart·pelk·mork", "47:47:47;") =&gt; "art·sart·elk·pelk·erk·mork"<br/>
-                                inflect("sart·pelk·mork", "-47:_47:_47;") =&gt; "sart·art·pelk·elk·mork·erk"
+                                inflect("sart·pelk·mork", "_47:_47:_47;") =&gt; "sart·art·pelk·elk·mork·erk"
                             </td>
                         </tr>
                         <tr>
@@ -326,7 +333,7 @@
                             <td>double at sign</td>
                             <td>@@</td>
                             <td>tone repeater/designator</td>
-                            <td>inflect("pản·pen", "47@;") =&gt; "pản·ản·pen"</td>
+                            <td>inflect("pản·pen", "47@@;") =&gt; "pản·ản·pen"</td>
                         </tr>
                         <tr>
                             <td>asterisk</td>
@@ -392,23 +399,23 @@
                             <td>dollar sign followed by a number (within the scope of a dot)</td>
                             <td>.$n<br/>$n.</td>
                             <td>stress pusher</td>
-                            <td>inflect("as·ka·don", "sa.t$4-") =&gt; "sa·tás·ka·don"<br/>
-                                inflect("as·ka·don", ";$4.") =&gt; "as·ka·dón"
+                            <td>inflect("as·ka·don", "sa.t$$4-") =&gt; "sa·tás·ka·don"<br/>
+                                inflect("as·ka·don", ";$$4.") =&gt; "as·ka·dón"
                             </td>
                         </tr>
                         <tr>
                             <td>percent sign followed by a number (within the scope of a dot)</td>
                             <td>.%n<br/>%n.</td>
                             <td>vowel length pusher</td>
-                            <td>inflect("as·ka·don", "te.m%12-") =&gt; "te·mās·ka·don"<br/>
-                                inflect("as·ka·don", ";%12.") =&gt; "as·ka·dōn"
+                            <td>inflect("as·ka·don", "te.m%%12-") =&gt; "te·mās·ka·don"<br/>
+                                inflect("as·ka·don", ";%%12.") =&gt; "as·ka·dōn"
                             </td>
                         </tr>
                         <tr>
                             <td>at sign followed by a number (within the scope of a dot)</td>
                             <td>.@n<br/>@n.</td>
                             <td>tone pusher</td>
-                            <td>inflect("tre·pon", ";@2.") =&gt; "tre·pỏn"</td>
+                            <td>inflect("tre·pon", ";@@2.") =&gt; "tre·pỏn"</td>
                         </tr>
                         <tr>
                             <td>exclamation mark (within scope of a dot)</td>
@@ -461,14 +468,14 @@
                             </td>
                         </tr>
                         <tr>
-                            <td>dashes bounding a scope</td>
-                            <td>-...-</td>
-                            <td>infixing expression</td>
-                            <td>inflect("plan·traks", "-in-") =&gt; "pin·lan·traks"
-                                inflect("plan·traks", "--in-") =&gt; "plin·an·traks"
-                                inflect("plan·traks", "--i.n-") =&gt; "pli·nan·traks"
-                                inflect("plan·traks", "-.in-") =&gt; "plan·tin·raks"
-                                inflect("plan·traks", "--.i.n-") =&gt; "plan·tri.naks"
+                            <td>pipes</td>
+                            <td>|</td>
+                            <td>for infixing expression</td>
+                            <td>inflect("plan·traks", "|1in|") =&gt; "plin·an·traks"<br/>
+                                inflect("plan·traks", "|2in|") =&gt; "pin·lan·traks"<br/>
+                                inflect("plan·traks", "|4in|") =&gt; "plainn·traks"<br/>
+                                inflect("plan·traks", "|7in|") =&gt; "plan·in·traks"<br/>
+                                inflect("plan·traks", "|7~in|") =&gt; "pla·nin·traks"
                             </td>
                         </tr>
                     </tbody>
